@@ -1,0 +1,22 @@
+body {
+    background: #006EFF;
+    color: white;
+}
+
+div.book {
+  background: #679CF6;
+  padding: 5px 10px 5px 10px;
+  margin: 10px;
+  border-radius: 10px;
+  position: relative;
+  height: 110px;
+}
+
+div.book > h4 {
+  display: inline-block;
+}
+
+span.glyphicon.delete-book:hover, span.glyphicon.edit-book:hover {
+  cursor: pointer;
+  color: #CDCDCD
+}

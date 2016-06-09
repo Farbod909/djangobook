@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css_imports %}
+  <link rel="stylesheet" href="{% static 'books/css/create.css' %}">
+{% endblock %}
+
+{% block content %}
+  <input id="book-title" type="text" placeholder="Title" /><br/>
+  <input id="book-author"  type="text" placeholder="Author" /><br/>
+  <input id="book-page-count"  type="number" placeholder="Page Count" /><br/>
+  <input id="book-create"  type="button" value="Create" />
+{% endblock %}
+
+{% block js_imports %}
+  <script>
+    $(document).ready(function() {
+
+        $("#book-create").click(function() {
+            $.post('/books/', {
+                title: $("#book-title").val(),
+                author: $("#book-author").val(),
+                page_count: $("#book-page-count").val(),
+                csrfmiddlewaretoken: Cookies.get('csrftoken')
+            }, function(response) {
+                if (response == "success") {
+                    location = "{% url 'books:index' %}"
+                }
+            });
+        });
+    });
+  </script>
+{% endblock %}

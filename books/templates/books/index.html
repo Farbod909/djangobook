@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css_imports %}
+  <link rel="stylesheet" href="{% static 'books/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+  {% for book in books %}
+    <div class="col-lg-3 col-md-4 col-sm-6">
+      <div class="book">
+          <h4>{{ book.title }}</h4>&nbsp;
+          <span class="glyphicon glyphicon-pencil delete-book"></span>
+          <span class="glyphicon glyphicon-trash delete-book"></span>
+          <h5>by <span>{{ book.author }}</span></h5>
+          <h5><span>{{ book.page_count }}</span> pages</h5>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
